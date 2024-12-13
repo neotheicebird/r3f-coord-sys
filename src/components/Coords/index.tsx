@@ -16,13 +16,18 @@ const overlayStyle = {
 };
 
 export default function Coords() {
-  const [cameraPosition, setCameraPosition] = useState({ x: 0, y: 0, z: 0 });
+  const cameraInitPos = [-9, -6, 15];
+  const [cameraPosition, setCameraPosition] = useState({
+    x: cameraInitPos[0],
+    y: cameraInitPos[1],
+    z: cameraInitPos[2],
+  });
 
   return (
     <div>
       <Canvas
         style={{ width: "100vw", height: "100vh" }}
-        camera={{ position: [-9, -6, 15], fov: 35, near: 0.1, far: 50 }}
+        camera={{ position: cameraInitPos, fov: 35, near: 0.1, far: 50 }}
       >
         <Scene onCameraChange={setCameraPosition} />
         <Perf position="bottom-left" />
